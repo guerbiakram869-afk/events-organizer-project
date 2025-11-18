@@ -1,0 +1,213 @@
+/* assets/css/style.css
+  Clean, professional styles tailored to the provided HTML.
+  Keeps Bootstrap defaults but refines visuals, spacing and accessibility.
+*/
+
+/* ========== THEME VARIABLES ========== */
+:root{
+  --accent: #0d6efd;         /* Bootstrap primary blue (can be adjusted) */
+  --accent-2: #ffc107;      /* secondary accent (used sparingly) */
+  --muted: #6c757d;
+  --bg: #f7f7f7;
+  --card-radius: 12px;
+  --card-shadow: 0 8px 24px rgba(20,25,30,0.06);
+  --focus-glow: rgba(13,110,253,0.12);
+}
+
+/* ========== RESET / BASE ========== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:"Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background:var(--bg);
+  color:#222;
+  line-height:1.45;
+  padding-top:76px; /* matches fixed header height in your HTML */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Headings */
+h1,h2,h3,h4,h5{color:#111}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Utility: container sections */
+section{padding:48px 0}
+
+/* ========== NAVBAR ========== */
+.navbar{
+  background:#fff;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.navbar-brand{
+  letter-spacing:1px;
+  text-transform:uppercase;
+  font-weight:700;
+  color: #111 !important;
+}
+.navbar-nav .nav-link{
+  color: #495057;
+  padding:0.5rem 0.75rem;
+  transition: color .15s ease, transform .12s ease;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus{
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+.navbar .navbar-toggler{border:0}
+
+/* ========== HERO / CAROUSEL ========== */
+.hero{padding-top:56px;padding-bottom:56px}
+.hero .display-6{
+  font-weight:700;
+  font-size:2rem;
+  color:#0b1720;
+  margin-bottom:0.5rem;
+}
+@media(min-width:992px){
+  .hero .display-6{font-size:2.5rem}
+}
+.hero .lead{color:var(--muted);font-size:1.05rem}
+
+/* Carousel visuals */
+.carousel,
+.carousel .carousel-inner,
+.carousel .carousel-item{border-radius:10px;overflow:hidden}
+.carousel .carousel-item img,
+#heroCarousel .carousel-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  aspect-ratio:16/9;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+  opacity:.95;
+}
+
+/* ========== SERVICES CARDS ========== */
+#services{--accent:var(--accent);--muted:var(--muted)}
+#services h2{font-weight:700;margin-bottom:1rem;color:#0b1720}
+#services .row{align-items:stretch}
+#services .card{
+  border:0;
+  border-radius:var(--card-radius);
+  overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+#services .card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--card-shadow);
+}
+#services .card-img-top.gallery-img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
+  transition:transform .45s ease;
+  flex-shrink:0;
+}
+#services .card-img-top.card-img-hover:hover{transform:scale(1.06)}
+#services .card-body{
+  padding:1.15rem;
+  color:#2b2b2b;
+  flex:1 1 auto;
+  display:flex;
+  flex-direction:column;
+}
+#services .card-title{font-size:1.05rem;margin-bottom:0.35rem;font-weight:600;color:#111}
+#services .card-text{color:var(--muted);margin-bottom:0.6rem}
+#services ul{margin:0;padding-left:1.05rem;color:#495057;font-size:0.95rem}
+#services ul li{margin-bottom:.25rem}
+
+/* Smaller images on very small screens */
+@media(max-width:576px){
+  #services .card-img-top.gallery-img{height:160px}
+}
+
+/* ========== RESERVATION FORM ========== */
+#reservation{--input-border:#e6e9ee;--danger:#d93025}
+#reservation h2{color:#0b1720;margin-bottom:1rem}
+#bookingForm .form-control,
+#bookingForm .form-select{
+  border-radius:8px;
+  border:1px solid var(--input-border);
+  padding:.55rem .75rem;
+  transition:box-shadow .12s ease, border-color .12s ease;
+  background-clip:padding-box;
+  background-color:#fff;
+}
+#bookingForm .form-control:focus,
+#bookingForm .form-select:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 0 .15rem var(--focus-glow);
+}
+#bookingForm label.required::after{
+  content:" *";
+  color:var(--danger);
+  margin-left:4px;
+  font-weight:600;
+}
+
+/* Checkboxes layout */
+#bookingForm .form-check{
+  margin-bottom:.5rem;
+  display:flex;
+  align-items:flex-start;
+  gap:.6rem;
+}
+#bookingForm .form-check-input{width:1.05rem;height:1.05rem;margin-top:.18rem}
+#bookingForm .form-check-label{margin:0;color:#3b3b3b;font-size:.95rem}
+
+/* validation text */
+#bookingForm .invalid-feedback{font-size:.875rem;color:var(--danger);margin-top:.25rem}
+
+/* Reservation column card (summary) */
+#reservation .card{border-radius:12px}
+#reservation .card .card-body{padding:1rem}
+#quickSummary{color:#444;font-size:.95rem;line-height:1.4}
+
+/* Buttons */
+.btn-outline-primary{
+  border-radius:8px;
+  padding:.55rem .9rem;
+}
+.btn-success{border-radius:8px;padding:.55rem .9rem}
+
+/* ========== MODAL ========== */
+.modal-content{border-radius:12px}
+.modal-title{font-weight:700;color:#0b1720}
+
+/* ========== CONTACT & FOOTER ========== */
+#contact h2{margin-bottom:.5rem}
+footer{
+  background:#f8f9fa;
+  color:#495057;
+  padding:18px 0;
+  border-top:1px solid rgba(0,0,0,0.04);
+  font-size:.9rem;
+}
+footer a{color:var(--accent)}
+footer a:hover{text-decoration:underline}
+
+/* ========== ACCESSIBILITY / REDUCE MOTION ========== */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important}
+}
+
+/* ========== SMALL TWEAKS ========== */
+.container img{max-width:100%;height:auto;display:block}
+.shadow-sm{box-shadow:0 6px 18px rgba(20,25,30,0.04) !important}
+
+/* End of file */
